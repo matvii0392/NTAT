@@ -11,6 +11,6 @@ Visualize data: Uses matplotlib to create a simple bar chart showing the distrib
 
 # Instructions to Compile and Run:
 
-Operating System: Ubuntu 22.04 LTS
+Operating System: MacOS 12.4
 Python Version: Python 3.10
 Required Libraries: pcapy, scapy, matplotlib

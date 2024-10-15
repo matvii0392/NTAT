@@ -2,7 +2,7 @@ import pcapy
 from scapy.all import *
 import matplotlib.pyplot as plt
 from scapy.layers.l2 import Ether
-from collections import defaultdict
+
 
 # Network interface to capture packets from
 interface = "en0"
