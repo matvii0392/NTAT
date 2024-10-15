@@ -2,23 +2,23 @@ import pcapy
 from scapy.all import *
 import matplotlib.pyplot as plt
 from scapy.layers.l2 import Ether
+from collections import defaultdict
 
 # Network interface to capture packets from
-interface = "eth0"
+interface = "en0"
 
 # Capture duration in seconds
-capture_duration = 10
+capture_duration = 2
 
 # Function to process captured packets
-def process_packet(packet):
-    # Dissect the packet using scapy
+def process_packet(header, data):
     try:
-        packet_scapy = Ether(packet)
-        protocol = packet_scapy.getlayer(2).name  # Get Layer 3 protocol (e.g., IP, ARP)
+        packet_scapy = Ether(data)
+        protocol = packet_scapy.getlayer(2).name
         protocol_counts[protocol] += 1
-        total_bytes[protocol] += len(packet)
-    except:
-        pass
+        total_bytes[protocol] += len(data)
+    except Exception as e:
+        print(f"Error processing packet: {e}")  # Print any errors encountered
 
 # Initialize dictionaries to store protocol counts and total bytes
 protocol_counts = defaultdict(int)
